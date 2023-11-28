@@ -4,6 +4,9 @@ body {
   background-color: #f1f1f1;
   font-family: "Inter", sans-serif;
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 * {
   margin: 0;
@@ -92,7 +95,7 @@ button {
   font-family: "Inter", sans-serif;
 }
 .focusable-element:focus {
-  border: 2px solid #005bde;
+  outline: #005bde solid 2px;
 }
 .store-name {
   font-size: 12px;
@@ -410,7 +413,7 @@ li {
   font-weight: 500;
   border: 1.5px 1.5px 0px 1.5px #ffffff;
 }
-.c2a2{
+.c2a2 {
   color: #404040;
   font-weight: 600;
   margin-left: 10px;
@@ -421,15 +424,13 @@ li {
   height: 25px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url("https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg");
-  filter: invert(29%) sepia(35%) saturate(7%) hue-rotate(52deg) brightness(83%)
-    contrast(85%);
   transform: translateY(10%);
 }
-.onboardingTick:hover {
-  background-image: url("https://crushingit.tech/hackathon-assets/icon-dashed-circle.svg");
-  filter: invert(29%) sepia(35%) saturate(7%) hue-rotate(52deg) brightness(83%)
-    contrast(85%);
+.onboardingTick > svg > circle {
+  stroke: #616161;
+}
+.onboardingTick:hover > svg > circle {
+  stroke-dasharray: 1 1;
 }
 
 @media (max-width: 430px) {
@@ -439,6 +440,15 @@ li {
   }
   #store-name {
     display: none;
+  }
+  .navContainer__dropdown {
+    right: -15%;
+  }
+  #notification-menu {
+    width: 21rem;
+  }
+  .notificationMenu_container--bottom {
+    text-align: center;
   }
   .navContainer__search-bar {
     display: flex;

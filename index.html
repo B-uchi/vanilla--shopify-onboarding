@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Level up hackathon" />
-    <link rel="stylesheet" href="./app.css" />
+    <link defer rel="stylesheet" href="./app.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,9 +40,8 @@
             class="focusable-element"
             aria-haspopup="true"
             aria-expanded="false"
-            role="menu"
             aria-controls="notification-menu"
-            title="Notification menu"
+            aria-label="notification menu button"
           >
             <img
               id="notification-bell"
@@ -53,10 +52,8 @@
           <button
             class="navContainer__button--menu focusable-element"
             aria-haspopup="true"
-            title="Main menu"
             aria-expanded="false"
-            aria-label="Main menu"
-            role="menu"
+            aria-label="Main menu button"
             aria-controls="main-menu"
           >
             <p class="store-name">Davii Collections</p>
@@ -86,7 +83,7 @@
                     >
                       <img
                         src="https://crushingit.tech/hackathon-assets/icon-store.svg"
-                        alt="stores icon"
+                        alt="stores_icon"
                         id="all-stores"
                       />
                       All stores
@@ -215,6 +212,8 @@
           class="mainContainer__popup"
           id="plan"
           data-popupShowing="true"
+          role="banner"
+          aria-label="pricing banner"
         >
           <div id="popup-container">
             Extend your trial for $1/month for 3 months on select plans.
@@ -228,7 +227,7 @@
               <button id="close-popup" class="focusable-element">
                 <img
                   src="https://crushingit.tech/hackathon-assets/icon-cross.svg"
-                  alt="close popup"
+                  alt="close banner"
                 />
               </button>
             </div>
@@ -245,18 +244,24 @@
             <div class="mainCard__container--header">
               <div class="header">
                 <h2 id="main-heading">Setup guide</h2>
-                <button id="caret" class="focusable-element">
+                <button
+                  id="caret"
+                  class="focusable-element"
+                  aria-expanded="true"
+                  aria-controls="main"
+                  aria-label="Toggle setup card"
+                >
                   <img
                     src="https://crushingit.tech/hackathon-assets/icon-arrow-up.svg"
                     id="caret_img"
-                    alt="Toggle setup guide"
+                    alt="arrow_icon"
                   />
                 </button>
               </div>
               <p id="tagline">
                 Use this personalized guide to get your store up and running.
               </p>
-              <div class="progressBar__container">
+              <div class="progressBar__container" role="progressbar">
                 <p id="progress">0 / 5 completed</p>
                 <div class="progressBar">
                   <div class="barStatus"></div>
@@ -272,12 +277,36 @@
               >
                 <div class="onboardingStep_left">
                   <div class="onboardingStep__left">
-                    <button aria-label="Tick option">
-                      <div class="onboardingTick"></div>
+                    <button aria-label="Tick option" class="focusable-element">
+                      <div class="onboardingTick">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 32 32"
+                          class="svgCircle"
+                          fill="none"
+                        >
+                          <circle
+                            cx="16"
+                            cy="16"
+                            r="12"
+                            stroke="#616161"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-dasharray="4 6"
+                          />
+                        </svg>
+                      </div>
                     </button>
                   </div>
                   <div class="onboardingStep__middle">
-                    <button class="onboardingStep__title">
+                    <button
+                      class="onboardingStep__title focusable-element"
+                      aria-expanded="true"
+                      aria-controls="first"
+                    >
                       Customize your online store
                     </button>
                     <div class="onboardingStep__middle--middle">
@@ -295,7 +324,7 @@
                       </p>
                     </div>
                     <div class="c2a">
-                      <button class="c2aa">Customize theme</button>
+                      <button class="c2aa focusable-element">Customize theme</button>
                     </div>
                   </div>
                 </div>
@@ -315,12 +344,33 @@
               >
                 <div class="onboardingStep_left">
                   <div class="onboardingStep__left">
-                    <button aria-label="Tick option">
-                      <div class="onboardingTick"></div>
+                    <button aria-label="Tick option" class="focusable-element">
+                      <div class="onboardingTick">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 32 32"
+                          class="svgCircle"
+                          fill="none"
+                        >
+                          <circle
+                            cx="16"
+                            cy="16"
+                            r="12"
+                            stroke="#616161"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-dasharray="4 6"
+                          />
+                        </svg>
+                      </div>
                     </button>
                   </div>
                   <div class="onboardingStep__middle">
-                    <button class="onboardingStep__title">
+                    <button class="onboardingStep__title focusable-element" aria-expanded="false"
+                      aria-controls="second">
                       Add your first product
                     </button>
                     <div class="onboardingStep__middle--middle">
@@ -338,8 +388,8 @@
                       </p>
                     </div>
                     <div class="c2a">
-                      <button class="c2aa">Add product</button>
-                      <button class="c2a2">Import product</button>
+                      <button class="c2aa focusable-element">Add product</button>
+                      <button class="c2a2 focusable-element">Import product</button>
                     </div>
                   </div>
                 </div>
@@ -359,12 +409,33 @@
               >
                 <div class="onboardingStep_left">
                   <div class="onboardingStep__left">
-                    <button aria-label="Tick option">
-                      <div class="onboardingTick"></div>
+                    <button aria-label="Tick option" class="focusable-element">
+                      <div class="onboardingTick">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 32 32"
+                          class="svgCircle"
+                          fill="none"
+                        >
+                          <circle
+                            cx="16"
+                            cy="16"
+                            r="12"
+                            stroke="#616161"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-dasharray="4 6"
+                          />
+                        </svg>
+                      </div>
                     </button>
                   </div>
                   <div class="onboardingStep__middle">
-                    <button class="onboardingStep__title">
+                    <button class="onboardingStep__title focusable-element" aria-expanded="false"
+                      aria-controls="third">
                       Add a custom domain
                     </button>
                     <div class="onboardingStep__middle--middle">
@@ -383,7 +454,7 @@
                       </p>
                     </div>
                     <div class="c2a">
-                      <button class="c2aa">Add domain</button>
+                      <button class="c2aa focusable-element">Add domain</button>
                     </div>
                   </div>
                 </div>
@@ -403,12 +474,33 @@
               >
                 <div class="onboardingStep_left">
                   <div class="onboardingStep__left">
-                    <button aria-label="Tick option">
-                      <div class="onboardingTick"></div>
+                    <button aria-label="Tick option" class="focusable-element">
+                      <div class="onboardingTick">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 32 32"
+                          class="svgCircle"
+                          fill="none"
+                        >
+                          <circle
+                            cx="16"
+                            cy="16"
+                            r="12"
+                            stroke="#616161"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-dasharray="4 6"
+                          />
+                        </svg>
+                      </div>
                     </button>
                   </div>
                   <div class="onboardingStep__middle">
-                    <button class="onboardingStep__title">
+                    <button class="onboardingStep__title focusable-element" aria-expanded="false"
+                      aria-controls="fourth">
                       Name your store
                     </button>
                     <div class="onboardingStep__middle--middle">
@@ -427,7 +519,7 @@
                       </p>
                     </div>
                     <div class="c2a">
-                      <button class="c2aa">Name store</button>
+                      <button class="c2aa focusable-element">Name store</button>
                     </div>
                   </div>
                 </div>
@@ -447,12 +539,33 @@
               >
                 <div class="onboardingStep_left">
                   <div class="onboardingStep__left">
-                    <button aria-label="Tick option">
-                      <div class="onboardingTick"></div>
+                    <button aria-label="Tick option" class="focusable-element">
+                      <div class="onboardingTick">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="25"
+                          height="25"
+                          viewBox="0 0 32 32"
+                          class="svgCircle"
+                          fill="none"
+                        >
+                          <circle
+                            cx="16"
+                            cy="16"
+                            r="12"
+                            stroke="#616161"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-dasharray="4 6"
+                          />
+                        </svg>
+                      </div>
                     </button>
                   </div>
                   <div class="onboardingStep__middle">
-                    <button class="onboardingStep__title">
+                    <button class="onboardingStep__title focusable-element" aria-expanded="false"
+                      aria-controls="fifth">
                       Set up a payment provider
                     </button>
                     <div class="onboardingStep__middle--middle">
@@ -471,7 +584,7 @@
                       </p>
                     </div>
                     <div class="c2a">
-                      <button class="c2aa">Set up payment</button>
+                      <button class="c2aa focusable-element">Set up payment</button>
                     </div>
                   </div>
                 </div>

@@ -16,6 +16,7 @@ const onboardingSection = document.querySelector(".mainCard__container--body");
 const onboardingTick = document.querySelectorAll(".onboardingTick");
 const progressBarStatus = document.querySelector(".barStatus");
 const progressText = document.getElementById("progress");
+const svgCircle = document.querySelectorAll(".svgCircle");
 
 let completedSteps = 0;
 const changeColor = () => {
@@ -87,10 +88,12 @@ selectPlan.forEach((btn) => {
 caretBtn.addEventListener("click", () => {
   const isExpanded = mainCard.dataset.expanded;
   if (isExpanded === "true") {
+    caretBtn.ariaExpanded = "false";
     onboardingSection.style.display = "none";
     mainCard.setAttribute("data-expanded", "false");
     caretBtnImg.style.transform = "rotate(180deg)";
   } else {
+    caretBtn.ariaExpanded = "true";
     onboardingSection.style.display = "block";
     mainCard.setAttribute("data-expanded", "true");
     caretBtnImg.style.transform = "rotate(360deg)";
@@ -100,9 +103,13 @@ caretBtn.addEventListener("click", () => {
 const closeAllOnboarding = () => {
   allOnboardingSteps.forEach((step) => {
     step.setAttribute("data-max", "false");
+    allOnboardingTitles.forEach((title) => {
+      title.ariaExpanded = "false";
+    });
   });
 };
 const openSelectedOnboarding = (i) => {
+  allOnboardingTitles.item(i).ariaExpanded = "true";
   allOnboardingSteps.item(i).setAttribute("data-max", "true");
 };
 
@@ -130,6 +137,7 @@ onboardingTick.forEach((tick_btn, i) => {
       tick_btn.style.backgroundImage =
         'url("https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg")';
       allOnboardingSteps.item(i).setAttribute("data-selected", "true");
+      svgCircle.item(i).style.display = "none";
       if (i != 4) {
         closeAllOnboarding();
         openSelectedOnboarding(i + 1);
@@ -139,6 +147,7 @@ onboardingTick.forEach((tick_btn, i) => {
       tick_btn.style.backgroundImage =
         'url("./assets/icons/onboardingTick.svg")';
       allOnboardingSteps.item(i).setAttribute("data-selected", "false");
+      svgCircle.item(i).style.display = "block";
       progress("d");
     }
   });
