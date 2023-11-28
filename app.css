@@ -422,9 +422,30 @@ li {
 .onboardingTick {
   width: 25px;
   height: 25px;
+  position: relative;
   background-size: contain;
   background-repeat: no-repeat;
   transform: translateY(10%);
+}
+.spinner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.rotate {
+  display: block;
+  animation: spin 1s infinite;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .onboardingTick > svg > circle {
   stroke: #616161;

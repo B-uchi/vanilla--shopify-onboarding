@@ -17,6 +17,7 @@ const onboardingTick = document.querySelectorAll(".onboardingTick");
 const progressBarStatus = document.querySelector(".barStatus");
 const progressText = document.getElementById("progress");
 const svgCircle = document.querySelectorAll(".svgCircle");
+const spinners = document.querySelectorAll(".spinner");
 
 let completedSteps = 0;
 const changeColor = () => {
@@ -134,18 +135,23 @@ const progress = (action) => {
 onboardingTick.forEach((tick_btn, i) => {
   tick_btn.addEventListener("click", () => {
     if (allOnboardingSteps.item(i).dataset.selected === "false") {
-      tick_btn.style.backgroundImage =
-        'url("https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg")';
+      spinners.item(i).classList.add("rotate");
+      setTimeout(() => {
+        tick_btn.style.backgroundImage =
+          'url("https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg")';
+        spinners.item(i).classList.remove("rotate");
+
+        progress("i");
+      }, 2000);
       allOnboardingSteps.item(i).setAttribute("data-selected", "true");
       svgCircle.item(i).style.display = "none";
       if (i != 4) {
         closeAllOnboarding();
         openSelectedOnboarding(i + 1);
       }
-      progress("i");
     } else {
-      tick_btn.style.backgroundImage =
-        'url("./assets/icons/onboardingTick.svg")';
+      spinners.item(i).classList.remove("rotate");
+      tick_btn.style.backgroundImage = "none";
       allOnboardingSteps.item(i).setAttribute("data-selected", "false");
       svgCircle.item(i).style.display = "block";
       progress("d");
