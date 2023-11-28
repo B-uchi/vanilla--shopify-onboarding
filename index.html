@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Level up hackathon" />
+    <link rel="stylesheet" href="./app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      defer
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Shopify Admin</title>
+  </head>
+  <body>
+    <nav>
+      <div class="navContainer">
+        <a href="https://shopify.com"><div class="navContainer__logo"></div></a>
+        <div class="navContainer__search-bar">
+          <img
+            src="https://crushingit.tech/hackathon-assets/icon-search.svg"
+            id="search-icon"
+            alt="search icon"
+          />
+          <input
+            type="text"
+            onclick="changeColor()"
+            onblur="resetColor()"
+            tabindex="0"
+            id="search-bar"
+            aria-label="Search bar"
+            placeholder="Search"
+          />
+        </div>
+        <div class="navContainer_right">
+          <button
+            id="notification"
+            class="focusable-element"
+            aria-haspopup="true"
+            aria-expanded="false"
+            role="menu"
+            aria-controls="notification-menu"
+            title="Notification menu"
+          >
+            <img
+              id="notification-bell"
+              src="https://crushingit.tech/hackathon-assets/icon-bell.svg"
+              alt="Notification menu icon"
+            />
+          </button>
+          <button
+            class="navContainer__button--menu focusable-element"
+            aria-haspopup="true"
+            title="Main menu"
+            aria-expanded="false"
+            aria-label="Main menu"
+            role="menu"
+            aria-controls="main-menu"
+          >
+            <p class="store-name">Davii Collections</p>
+            <div class="menu-icon">DC</div>
+          </button>
+          <div
+            class="navContainer__dropdown main-menu"
+            data-showing="false"
+            id="main-menu"
+            role="menu"
+            aria-label="Main Menu dropdown"
+          >
+            <div class="dropdown-container">
+              <div class="dropdown-top">
+                <ul>
+                  <li>
+                    <div class="dropdown store">
+                      <div class="menu-icon">DC</div>
+                      <h2 class="store-name">Davii Collections</h2>
+                    </div>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      title="All stores"
+                    >
+                      <img
+                        src="https://crushingit.tech/hackathon-assets/icon-store.svg"
+                        alt="stores icon"
+                        id="all-stores"
+                      />
+                      All stores
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown-middle">
+                <ul>
+                  <li>
+                    <button
+                      class="menu-item focusable-element"
+                      title="Help Center"
+                      role="menuitem"
+                    >
+                      Help Center
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      title="Changelog"
+                    >
+                      Changelog
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      title="Community forums"
+                    >
+                      Community forums
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      title="Hire a Shopify Partner"
+                    >
+                      Hire a Shopify Partner
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      title="Keyboard shortcuts"
+                    >
+                      Keyboard shortcuts
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <div class="dropdown-bottom">
+                <ul>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      id="owner"
+                      title="davidmichael@gmail.com"
+                    >
+                      David Michael
+                      <span id="email">davidmichael@gmail.com</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      title="Manage Account"
+                    >
+                      Manage Account
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      role="menuitem"
+                      class="menu-item focusable-element"
+                      title="Log out"
+                    >
+                      Log out
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="navContainer__dropdown notification-menu"
+            data-showing="false"
+            id="notification-menu"
+            role="menu"
+            aria-label="Notification Menu dropdown"
+          >
+            <div class="notificationMenu_container">
+              <div class="notificationMenu_container--top">
+                <h2 id="notification-header" role="heading">Alerts</h2>
+                <div class="">
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-filter.svg"
+                    alt="filter"
+                    id="filter_icon"
+                  />
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-check-empty-circle.svg"
+                    id="done_icon"
+                    alt="done"
+                  />
+                </div>
+              </div>
+              <div role="menuitem" class="notificationMenu_container--bottom">
+                Alerts about your store and account will show here
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="mainContainer">
+        <section
+          class="mainContainer__popup"
+          id="plan"
+          data-popupShowing="true"
+        >
+          <div id="popup-container">
+            Extend your trial for $1/month for 3 months on select plans.
+            <div id="plan-right">
+              <button
+                id="desktop_btn"
+                class="mainContainer__popup--button focusable-element"
+              >
+                Select a plan
+              </button>
+              <button id="close-popup" class="focusable-element">
+                <img
+                  src="https://crushingit.tech/hackathon-assets/icon-cross.svg"
+                  alt="close popup"
+                />
+              </button>
+            </div>
+          </div>
+          <button
+            class="mainContainer__popup--button focusable-element"
+            id="mobile_btn"
+          >
+            Select a plan
+          </button>
+        </section>
+        <section id="main" data-expanded="true">
+          <div class="mainCard__container">
+            <div class="mainCard__container--header">
+              <div class="header">
+                <h2 id="main-heading">Setup guide</h2>
+                <button id="caret" class="focusable-element">
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/icon-arrow-up.svg"
+                    id="caret_img"
+                    alt="Toggle setup guide"
+                  />
+                </button>
+              </div>
+              <p id="tagline">
+                Use this personalized guide to get your store up and running.
+              </p>
+              <div class="progressBar__container">
+                <p id="progress">0 / 5 completed</p>
+                <div class="progressBar">
+                  <div class="barStatus"></div>
+                </div>
+              </div>
+            </div>
+            <div class="mainCard__container--body">
+              <div
+                class="onboardingStep"
+                data-selected="false"
+                id="first"
+                data-max="true"
+              >
+                <div class="onboardingStep_left">
+                  <div class="onboardingStep__left">
+                    <button aria-label="Tick option">
+                      <div class="onboardingTick"></div>
+                    </button>
+                  </div>
+                  <div class="onboardingStep__middle">
+                    <button class="onboardingStep__title">
+                      Customize your online store
+                    </button>
+                    <div class="onboardingStep__middle--middle">
+                      <p class="description">
+                        Choose a theme and add your logo, colors, and images to
+                        reflect your brand.
+                        <span
+                          ><a
+                            class="learnMore"
+                            target="_blank"
+                            href="https://help.shopify.com/en/manual/online-store/themes/customizing-themes"
+                            >Learn more</a
+                          ></span
+                        >
+                      </p>
+                    </div>
+                    <div class="c2a">
+                      <button class="c2aa">Customize theme</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="onboardingStep__right">
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/customise-store.png"
+                    alt="customize your online store"
+                    class="onboardingImg"
+                  />
+                </div>
+              </div>
+              <div
+                class="onboardingStep"
+                data-selected="false"
+                id="second"
+                data-max="false"
+              >
+                <div class="onboardingStep_left">
+                  <div class="onboardingStep__left">
+                    <button aria-label="Tick option">
+                      <div class="onboardingTick"></div>
+                    </button>
+                  </div>
+                  <div class="onboardingStep__middle">
+                    <button class="onboardingStep__title">
+                      Add your first product
+                    </button>
+                    <div class="onboardingStep__middle--middle">
+                      <p class="description">
+                        Write a description, add photos, and set pricing for the
+                        products you plan to sell.
+                        <span
+                          ><a
+                            class="learnMore"
+                            target="_blank"
+                            href="https://help.shopify.com/en/manual/products/add-update-products"
+                            >Learn more</a
+                          ></span
+                        >
+                      </p>
+                    </div>
+                    <div class="c2a">
+                      <button class="c2aa">Add product</button>
+                      <button class="c2a2">Import product</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="onboardingStep__right">
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/product.png"
+                    alt="add your first product"
+                    class="onboardingImg"
+                  />
+                </div>
+              </div>
+              <div
+                class="onboardingStep"
+                data-selected="false"
+                id="third"
+                data-max="false"
+              >
+                <div class="onboardingStep_left">
+                  <div class="onboardingStep__left">
+                    <button aria-label="Tick option">
+                      <div class="onboardingTick"></div>
+                    </button>
+                  </div>
+                  <div class="onboardingStep__middle">
+                    <button class="onboardingStep__title">
+                      Add a custom domain
+                    </button>
+                    <div class="onboardingStep__middle--middle">
+                      <p class="description">
+                        Your current domain is 222219.myshopify.com but you can
+                        add a custom domain to help customers find your online
+                        store.
+                        <span
+                          ><a
+                            class="learnMore"
+                            target="_blank"
+                            href="https://help.shopify.com/en/manual/domains"
+                            >Learn more</a
+                          ></span
+                        >
+                      </p>
+                    </div>
+                    <div class="c2a">
+                      <button class="c2aa">Add domain</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="onboardingStep__right">
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/website.png"
+                    alt="add a custom domain"
+                    class="onboardingImg"
+                  />
+                </div>
+              </div>
+              <div
+                class="onboardingStep"
+                data-selected="false"
+                id="fourth"
+                data-max="false"
+              >
+                <div class="onboardingStep_left">
+                  <div class="onboardingStep__left">
+                    <button aria-label="Tick option">
+                      <div class="onboardingTick"></div>
+                    </button>
+                  </div>
+                  <div class="onboardingStep__middle">
+                    <button class="onboardingStep__title">
+                      Name your store
+                    </button>
+                    <div class="onboardingStep__middle--middle">
+                      <p class="description">
+                        Your temporary store name is currently Davii
+                        collections. The store name appears in your admin and
+                        your online store.
+                        <span
+                          ><a
+                            class="learnMore"
+                            target="_blank"
+                            href="https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name"
+                            >Learn more</a
+                          ></span
+                        >
+                      </p>
+                    </div>
+                    <div class="c2a">
+                      <button class="c2aa">Name store</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="onboardingStep__right">
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/name-store.png"
+                    alt="name your store"
+                    class="onboardingImg"
+                  />
+                </div>
+              </div>
+              <div
+                class="onboardingStep"
+                data-selected="false"
+                id="fifth"
+                data-max="false"
+              >
+                <div class="onboardingStep_left">
+                  <div class="onboardingStep__left">
+                    <button aria-label="Tick option">
+                      <div class="onboardingTick"></div>
+                    </button>
+                  </div>
+                  <div class="onboardingStep__middle">
+                    <button class="onboardingStep__title">
+                      Set up a payment provider
+                    </button>
+                    <div class="onboardingStep__middle--middle">
+                      <p class="description">
+                        Choose a payment provider to start accepting payments.
+                        You'll need to create an account with the payment
+                        provider and set it up with your Shopify store.
+                        <span
+                          ><a
+                            class="learnMore"
+                            target="_blank"
+                            href="https://help.shopify.com/en/manual/payments"
+                            >Learn more</a
+                          ></span
+                        >
+                      </p>
+                    </div>
+                    <div class="c2a">
+                      <button class="c2aa">Set up payment</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="onboardingStep__right">
+                  <img
+                    src="https://crushingit.tech/hackathon-assets/payment.png"
+                    alt="set up a payment provider"
+                    class="onboardingImg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+  <script defer src="./app.js"></script>
+</html>
